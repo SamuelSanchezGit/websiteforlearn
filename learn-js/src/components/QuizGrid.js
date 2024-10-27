@@ -2,6 +2,9 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { FaCheck, FaTimes, FaHourglassHalf } from 'react-icons/fa';
+import { Routes, Route } from 'react-router-dom';
+import Quiz1 from './Quiz1';
+import Quiz2 from './Quiz2';
 
 function QuizGrid() {
   const quizzes = [
@@ -63,6 +66,10 @@ function QuizGrid() {
           </Link>
         ))}
       </div>
+      <Routes>
+        <Route path="/quiz1" element={<Quiz1 setBtc={() => {}} />} />
+        <Route path="/quiz2" element={<Quiz2 setBtc={() => {}} />} />
+      </Routes>
     </div>
   );
 }
