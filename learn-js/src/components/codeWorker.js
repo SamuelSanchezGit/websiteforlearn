@@ -1,17 +1,17 @@
-/* eslint-disable no-restricted-globals */
-
+// eslint-disable-next-line no-restricted-globals
 self.onmessage = function (event) {
     const { code } = event.data;
     let result;
   
     try {
-      // Évaluer le code reçu
-      result = eval(code); // Attention : Eval n'est pas sécurisé, assurez-vous de vérifier l'input
+      // Exécution sécurisée du code en utilisant `new Function`
+      const codeToRun = new Function(code);
+      result = codeToRun();
     } catch (error) {
       result = error.message;
     }
   
-    // Envoyer le résultat de l'évaluation
+    // eslint-disable-next-line no-restricted-globals
     self.postMessage(result);
   };
   
