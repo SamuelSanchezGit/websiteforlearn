@@ -1,5 +1,4 @@
-/* eslint-disable no-restricted-globals */
-
+/* eslint-disable no-new-func */
 self.onmessage = function (e) {
     const { code } = e.data;
     let consoleOutput = "";
