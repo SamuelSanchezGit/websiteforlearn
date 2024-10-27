@@ -6,6 +6,12 @@ import Quiz1 from './components/Quiz1';
 import Quiz2 from './components/Quiz2';
 import Quiz3 from './components/Quiz3';
 import Quiz4 from './components/Quiz4';
+import Quiz5 from './components/Quiz5';
+import Quiz6 from './components/Quiz6';
+import Quiz7 from './components/Quiz7.js';
+import Quiz8 from './components/Quiz8';
+import Quiz9 from './components/Quiz9';
+import Quiz10 from './components/Quiz10';
 import CodeEditor from './components/CodeEditor';
 import Wallet from './components/Wallet';
 import Navigation from './components/Navigation';
@@ -62,6 +68,12 @@ function App() {
             <Route path="/quiz2" element={<Quiz2 setBtc={setBtc} />} />
             <Route path="/quiz3" element={<Quiz3 setBtc={setBtc} />} />
             <Route path="/quiz4" element={<Quiz4 setBtc={setBtc} />} />
+            <Route path="/quiz5" element={<Quiz5 setBtc={setBtc} />} />
+            <Route path="/quiz6" element={<Quiz6 setBtc={setBtc} />} />
+            <Route path="/quiz7" element={<Quiz7 setBtc={setBtc} />} />
+            <Route path="/quiz8" element={<Quiz8 setBtc={setBtc} />} />
+            <Route path="/quiz9" element={<Quiz9 setBtc={setBtc} />} />
+            <Route path="/quiz10" element={<Quiz10 setBtc={setBtc} />} />
             <Route path="/code" element={<CodeEditor code={code} setCode={setCode} />} />
             <Route path="/wallet" element={<Wallet btc={btc} />} />
             <Route path="/quiz" element={<QuizGrid />} />

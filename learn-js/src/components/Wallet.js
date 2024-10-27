@@ -1,5 +1,5 @@
 // Composant Wallet (components/Wallet.js)
-import React from 'react';
+import React from "react";
 
 function Wallet({ btc }) {
   const btcToEurRate = 30000; // Taux fictif pour la conversion BTC -> EUR

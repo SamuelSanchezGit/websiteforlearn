@@ -1,68 +1,72 @@
-// Composant Quiz4 (components/Quiz4.js)
+// Composant Quiz6 (components/Quiz6.js)
 import React, { useState, useEffect } from "react";
 import { FaHeart } from "react-icons/fa";
 import { Howl } from "howler";
 import successSound from "../sounds/success.mp3";
 
-function Quiz4({ setBtc }) {
+function Quiz6({ setBtc }) {
   const questions = [
     {
-      question: "Comment accéder à la longueur d'un tableau en JavaScript ?",
-      options: ["array.size", "array.length", "array.count"],
-      answer: 1,
-    },
-    {
       question:
-        "Quelle méthode permet d'ajouter un élément à la fin d'un tableau ?",
-      options: ["push()", "pop()", "append()"],
+        "Quelle méthode est utilisée pour vérifier si un tableau inclut un certain élément ?",
+      options: ["includes()", "has()", "contains()"],
       answer: 0,
     },
     {
       question:
-        "Quelle est la valeur par défaut d'une variable non initialisée en JavaScript ?",
-      options: ["undefined", "null", "0"],
+        "Comment itérer sur chaque élément d'un tableau en JavaScript ?",
+      options: ["forEach()", "forIn()", "loop()"],
       answer: 0,
     },
     {
-      question: "Comment déclarer une variable globale en JavaScript ?",
-      options: ["let", "const", "var"],
-      answer: 2,
-    },
-    {
-      question: "Quel est l'opérateur de comparaison stricte en JavaScript ?",
-      options: ["==", "===", "="],
-      answer: 1,
+      question: "Quelle est la sortie de '5' + true en JavaScript ?",
+      options: ["5true", "6", "Erreur"],
+      answer: 0,
     },
     {
       question:
-        "Quelle méthode est utilisée pour transformer une chaîne en majuscules ?",
-      options: ["toUpperCase()", "toCaps()", "upper()"],
-      answer: 0,
-    },
-    {
-      question: "Comment vérifie-t-on si une variable est de type nombre ?",
+        "Comment vérifier si une variable est de type fonction en JavaScript ?",
       options: [
-        "typeof variable === 'number'",
-        "isNumber(variable)",
-        "variable.isNumber",
+        "typeof variable === 'function'",
+        "isFunction(variable)",
+        "functionType(variable)",
       ],
       answer: 0,
     },
     {
       question:
-        "Quelle méthode permet de supprimer le dernier élément d'un tableau ?",
-      options: ["pop()", "remove()", "shift()"],
+        "Quelle méthode est utilisée pour ajouter des éléments au début d'un tableau ?",
+      options: ["unshift()", "push()", "prepend()"],
+      answer: 0,
+    },
+    {
+      question: "Quelle est la sortie de typeof NaN en JavaScript ?",
+      options: ["number", "NaN", "undefined"],
+      answer: 0,
+    },
+    {
+      question: "Quelle est la valeur de undefined == null en JavaScript ?",
+      options: ["true", "false", "Erreur"],
       answer: 0,
     },
     {
       question:
-        "Quelle est la structure correcte d'une condition if en JavaScript ?",
-      options: ["if condition then", "if (condition) {}", "if condition {}"],
+        "Comment copier un objet en JavaScript sans lien vers l'original ?",
+      options: ["Object.assign()", "copyObject()", "clone()"],
+      answer: 0,
+    },
+    {
+      question: "Quelle est la sortie de 'Hello'.charAt(1) ?",
+      options: ["H", "e", "l"],
       answer: 1,
     },
     {
-      question: "Quelle est la valeur de typeof null en JavaScript ?",
-      options: ["object", "null", "undefined"],
+      question: "Comment déclarer une fonction asynchrone en JavaScript ?",
+      options: [
+        "async function() {}",
+        "function async() {}",
+        "await function() {}",
+      ],
       answer: 0,
     },
   ];
@@ -97,7 +101,7 @@ function Quiz4({ setBtc }) {
       // Mettre à jour le statut du quiz dans localStorage
       const savedStatuses =
         JSON.parse(localStorage.getItem("quizStatuses")) || {};
-      savedStatuses[4] = "completed";
+      savedStatuses[6] = "completed";
       localStorage.setItem("quizStatuses", JSON.stringify(savedStatuses));
     }
   }, [currentQuestion, questions.length, score, setBtc]);
@@ -155,4 +159,4 @@ function Quiz4({ setBtc }) {
   );
 }
 
-export default Quiz4;
+export default Quiz6;

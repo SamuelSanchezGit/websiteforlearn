@@ -1,68 +1,71 @@
-// Composant Quiz4 (components/Quiz4.js)
+// Composant Quiz8 (components/Quiz8.js)
 import React, { useState, useEffect } from "react";
 import { FaHeart } from "react-icons/fa";
 import { Howl } from "howler";
 import successSound from "../sounds/success.mp3";
 
-function Quiz4({ setBtc }) {
+function Quiz8({ setBtc }) {
   const questions = [
     {
-      question: "Comment accéder à la longueur d'un tableau en JavaScript ?",
-      options: ["array.size", "array.length", "array.count"],
-      answer: 1,
-    },
-    {
       question:
-        "Quelle méthode permet d'ajouter un élément à la fin d'un tableau ?",
-      options: ["push()", "pop()", "append()"],
+        "Quelle est la sortie de (function(x) { return x * 2; })(10) en JavaScript ?",
+      options: ["20", "NaN", "Erreur"],
       answer: 0,
     },
     {
-      question:
-        "Quelle est la valeur par défaut d'une variable non initialisée en JavaScript ?",
-      options: ["undefined", "null", "0"],
-      answer: 0,
-    },
-    {
-      question: "Comment déclarer une variable globale en JavaScript ?",
-      options: ["let", "const", "var"],
-      answer: 2,
-    },
-    {
-      question: "Quel est l'opérateur de comparaison stricte en JavaScript ?",
-      options: ["==", "===", "="],
-      answer: 1,
-    },
-    {
-      question:
-        "Quelle méthode est utilisée pour transformer une chaîne en majuscules ?",
-      options: ["toUpperCase()", "toCaps()", "upper()"],
-      answer: 0,
-    },
-    {
-      question: "Comment vérifie-t-on si une variable est de type nombre ?",
+      question: "Quelle est la différence entre let et var en JavaScript ?",
       options: [
-        "typeof variable === 'number'",
-        "isNumber(variable)",
-        "variable.isNumber",
+        "let est bloqué dans sa portée, var est fonctionnel",
+        "var est bloqué dans sa portée, let est global",
+        "Aucune différence",
       ],
       answer: 0,
     },
     {
       question:
-        "Quelle méthode permet de supprimer le dernier élément d'un tableau ?",
-      options: ["pop()", "remove()", "shift()"],
+        "Comment définir une fonction qui s'auto-invoque en JavaScript ?",
+      options: ["(function() {})()", "function() {}()", "auto function() {}"],
+      answer: 0,
+    },
+    {
+      question: "Quelle est la sortie de typeof null en JavaScript ?",
+      options: ["object", "null", "undefined"],
+      answer: 0,
+    },
+    {
+      question: "Comment cloner un objet profondément en JavaScript ?",
+      options: [
+        "JSON.parse(JSON.stringify(obj))",
+        "Object.assign({}, obj)",
+        "copy(obj)",
+      ],
+      answer: 0,
+    },
+    {
+      question: "Quelle est la sortie de [] + {} en JavaScript ?",
+      options: ["[object Object]", "undefined", "Erreur"],
       answer: 0,
     },
     {
       question:
-        "Quelle est la structure correcte d'une condition if en JavaScript ?",
-      options: ["if condition then", "if (condition) {}", "if condition {}"],
-      answer: 1,
+        "Quelle méthode est utilisée pour ajouter un ou plusieurs éléments à un tableau en JavaScript ?",
+      options: ["push()", "add()", "append()"],
+      answer: 0,
     },
     {
-      question: "Quelle est la valeur de typeof null en JavaScript ?",
-      options: ["object", "null", "undefined"],
+      question: "Quelle est la portée des variables définies avec const ?",
+      options: ["Bloc", "Globale", "Fonction"],
+      answer: 0,
+    },
+    {
+      question: "Quelle est la sortie de typeof undefined en JavaScript ?",
+      options: ["undefined", "null", "object"],
+      answer: 0,
+    },
+    {
+      question:
+        "Comment vérifier si une chaîne commence par un certain mot en JavaScript ?",
+      options: ["startsWith()", "beginsWith()", "first()"],
       answer: 0,
     },
   ];
@@ -97,7 +100,7 @@ function Quiz4({ setBtc }) {
       // Mettre à jour le statut du quiz dans localStorage
       const savedStatuses =
         JSON.parse(localStorage.getItem("quizStatuses")) || {};
-      savedStatuses[4] = "completed";
+      savedStatuses[8] = "completed";
       localStorage.setItem("quizStatuses", JSON.stringify(savedStatuses));
     }
   }, [currentQuestion, questions.length, score, setBtc]);
@@ -155,4 +158,4 @@ function Quiz4({ setBtc }) {
   );
 }
 
-export default Quiz4;
+export default Quiz8;

@@ -1,68 +1,73 @@
-// Composant Quiz4 (components/Quiz4.js)
+// Composant Quiz7 (components/Quiz7.js)
 import React, { useState, useEffect } from "react";
 import { FaHeart } from "react-icons/fa";
 import { Howl } from "howler";
 import successSound from "../sounds/success.mp3";
 
-function Quiz4({ setBtc }) {
+function Quiz7({ setBtc }) {
   const questions = [
     {
-      question: "Comment accéder à la longueur d'un tableau en JavaScript ?",
-      options: ["array.size", "array.length", "array.count"],
-      answer: 1,
-    },
-    {
       question:
-        "Quelle méthode permet d'ajouter un élément à la fin d'un tableau ?",
-      options: ["push()", "pop()", "append()"],
+        "Quelle est la sortie de (function(){ return typeof arguments; })() en JavaScript ?",
+      options: ["object", "array", "undefined"],
       answer: 0,
     },
     {
-      question:
-        "Quelle est la valeur par défaut d'une variable non initialisée en JavaScript ?",
-      options: ["undefined", "null", "0"],
-      answer: 0,
-    },
-    {
-      question: "Comment déclarer une variable globale en JavaScript ?",
-      options: ["let", "const", "var"],
-      answer: 2,
-    },
-    {
-      question: "Quel est l'opérateur de comparaison stricte en JavaScript ?",
-      options: ["==", "===", "="],
-      answer: 1,
-    },
-    {
-      question:
-        "Quelle méthode est utilisée pour transformer une chaîne en majuscules ?",
-      options: ["toUpperCase()", "toCaps()", "upper()"],
-      answer: 0,
-    },
-    {
-      question: "Comment vérifie-t-on si une variable est de type nombre ?",
+      question: "Quelle est la différence entre '==' et '===' en JavaScript ?",
       options: [
-        "typeof variable === 'number'",
-        "isNumber(variable)",
-        "variable.isNumber",
+        "'==' compare les valeurs, '===' compare valeurs et types",
+        "'==' compare types, '===' compare valeurs",
+        "Aucune différence",
       ],
       answer: 0,
     },
     {
-      question:
-        "Quelle méthode permet de supprimer le dernier élément d'un tableau ?",
-      options: ["pop()", "remove()", "shift()"],
+      question: "Comment empêcher la modification d'un objet en JavaScript ?",
+      options: [
+        "Object.freeze()",
+        "Object.preventExtensions()",
+        "Object.lock()",
+      ],
+      answer: 0,
+    },
+    {
+      question: "Quelle est la sortie de 0.1 + 0.2 === 0.3 en JavaScript ?",
+      options: ["true", "false", "undefined"],
+      answer: 1,
+    },
+    {
+      question: "Comment créer une closure en JavaScript ?",
+      options: [
+        "Définir une fonction dans une autre fonction",
+        "Utiliser var au lieu de let",
+        "Déclarer une variable globale",
+      ],
+      answer: 0,
+    },
+    {
+      question: "Quelle est la sortie de [] + [] en JavaScript ?",
+      options: ["'' (une chaîne vide)", "undefined", "Erreur"],
+      answer: 0,
+    },
+    {
+      question: "Comment créer un objet sans prototype en JavaScript ?",
+      options: ["Object.create(null)", "{}", "new Object()"],
+      answer: 0,
+    },
+    {
+      question: "Quelle méthode permet de lier une fonction à un objet ?",
+      options: ["bind()", "call()", "apply()"],
+      answer: 0,
+    },
+    {
+      question: "Quelle est la sortie de typeof NaN en JavaScript ?",
+      options: ["number", "NaN", "undefined"],
       answer: 0,
     },
     {
       question:
-        "Quelle est la structure correcte d'une condition if en JavaScript ?",
-      options: ["if condition then", "if (condition) {}", "if condition {}"],
-      answer: 1,
-    },
-    {
-      question: "Quelle est la valeur de typeof null en JavaScript ?",
-      options: ["object", "null", "undefined"],
+        "Quelle est la portée d'une variable déclarée avec var à l'intérieur d'une fonction ?",
+      options: ["Fonction", "Bloc", "Globale"],
       answer: 0,
     },
   ];
@@ -97,7 +102,7 @@ function Quiz4({ setBtc }) {
       // Mettre à jour le statut du quiz dans localStorage
       const savedStatuses =
         JSON.parse(localStorage.getItem("quizStatuses")) || {};
-      savedStatuses[4] = "completed";
+      savedStatuses[7] = "completed";
       localStorage.setItem("quizStatuses", JSON.stringify(savedStatuses));
     }
   }, [currentQuestion, questions.length, score, setBtc]);
@@ -155,4 +160,4 @@ function Quiz4({ setBtc }) {
   );
 }
 
-export default Quiz4;
+export default Quiz7;

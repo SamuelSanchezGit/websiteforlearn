@@ -16,3 +16,26 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+
+/* Styles pour le mode sombre de l'éditeur de code */
+body.dark .code-editor {
+  background-color: #1e293b; /* Couleur sombre pour le fond */
+  color: #cbd5e1; /* Couleur claire pour le texte de code */
+  font-family: 'Courier New', Courier, monospace; /* Une police dédiée au code */
+  padding: 0.2em 0.4em;
+  border-radius: 4px;
+  border: 2px solid #4b5563; /* Une bordure légèrement plus claire */
+}
+
+/* Styles pour le mode sombre de la console */
+body.dark .console-output {
+  background-color: #1e293b; /* Couleur sombre pour la console */
+  color: #cbd5e1; /* Couleur claire pour le texte */
+  font-family: 'Courier New', Courier, monospace; /* Police dédiée au code */
+  padding: 1em;
+  border-radius: 4px;
+  border: 2px solid #4b5563; /* Bordure claire */
+}
+
+

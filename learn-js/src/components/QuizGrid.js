@@ -1,7 +1,7 @@
 // Composant QuizGrid (components/QuizGrid.js)
-import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { FaCheck, FaTimes, FaHourglassHalf } from 'react-icons/fa';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
+import { FaCheck, FaTimes, FaHourglassHalf } from "react-icons/fa";
 
 function QuizGrid() {
   const quizzes = [
@@ -28,11 +28,11 @@ function QuizGrid() {
 
   const getStatusIcon = (status) => {
     switch (status) {
-      case 'completed':
+      case "completed":
         return <FaCheck className="text-green-500" />;
-      case 'not_started':
+      case "not_started":
         return <FaTimes className="text-red-500" />;
-      case 'in_progress':
+      case "in_progress":
         return <FaHourglassHalf className="text-yellow-500" />;
       default:
         return null;
@@ -49,15 +49,15 @@ function QuizGrid() {
             key={quiz.id}
             className="border p-4 rounded shadow-lg hover:bg-gray-200"
             onClick={() => {
-              if (quizStatuses[quiz.id] !== 'completed') {
-                setQuizStatuses({ ...quizStatuses, [quiz.id]: 'in_progress' });
+              if (quizStatuses[quiz.id] !== "completed") {
+                setQuizStatuses({ ...quizStatuses, [quiz.id]: "in_progress" });
               }
             }}
           >
             <div className="flex items-center justify-between">
               <h3 className="text-xl font-bold">{quiz.title}</h3>
               <div className="ml-4">
-                {getStatusIcon(quizStatuses[quiz.id] || 'not_started')}
+                {getStatusIcon(quizStatuses[quiz.id] || "not_started")}
               </div>
             </div>
           </Link>

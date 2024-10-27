@@ -1,68 +1,75 @@
-// Composant Quiz4 (components/Quiz4.js)
+// Composant Quiz9 (components/Quiz9.js)
 import React, { useState, useEffect } from "react";
 import { FaHeart } from "react-icons/fa";
 import { Howl } from "howler";
 import successSound from "../sounds/success.mp3";
 
-function Quiz4({ setBtc }) {
+function Quiz9({ setBtc }) {
   const questions = [
     {
-      question: "Comment accéder à la longueur d'un tableau en JavaScript ?",
-      options: ["array.size", "array.length", "array.count"],
-      answer: 1,
-    },
-    {
       question:
-        "Quelle méthode permet d'ajouter un élément à la fin d'un tableau ?",
-      options: ["push()", "pop()", "append()"],
+        "Quelle est la sortie de (function() { return !![]; })() en JavaScript ?",
+      options: ["true", "false", "undefined"],
       answer: 0,
     },
     {
       question:
-        "Quelle est la valeur par défaut d'une variable non initialisée en JavaScript ?",
-      options: ["undefined", "null", "0"],
+        "Quelle est la différence entre Object.seal() et Object.freeze() en JavaScript ?",
+      options: [
+        "Object.freeze() rend l'objet immuable, Object.seal() permet de modifier les valeurs",
+        "Aucune différence",
+        "Object.seal() rend l'objet immuable, Object.freeze() permet de modifier les valeurs",
+      ],
       answer: 0,
     },
     {
-      question: "Comment déclarer une variable globale en JavaScript ?",
-      options: ["let", "const", "var"],
+      question: "Quelle est la sortie de typeof function(){} en JavaScript ?",
+      options: ["function", "object", "undefined"],
+      answer: 0,
+    },
+    {
+      question:
+        "Comment vérifier si un objet a une certaine propriété en JavaScript ?",
+      options: [
+        "'property' in object",
+        "object.hasOwnProperty('property')",
+        "Les deux réponses sont correctes",
+      ],
       answer: 2,
     },
     {
-      question: "Quel est l'opérateur de comparaison stricte en JavaScript ?",
-      options: ["==", "===", "="],
-      answer: 1,
-    },
-    {
-      question:
-        "Quelle méthode est utilisée pour transformer une chaîne en majuscules ?",
-      options: ["toUpperCase()", "toCaps()", "upper()"],
+      question: "Quelle est la sortie de [] == ![] en JavaScript ?",
+      options: ["true", "false", "undefined"],
       answer: 0,
     },
     {
-      question: "Comment vérifie-t-on si une variable est de type nombre ?",
+      question: "Comment créer un objet immuable en JavaScript ?",
+      options: ["Object.freeze()", "Object.seal()", "Object.immutable()"],
+      answer: 0,
+    },
+    {
+      question: "Quelle est la sortie de NaN === NaN en JavaScript ?",
+      options: ["true", "false", "undefined"],
+      answer: 1,
+    },
+    {
+      question: "Comment concaténer deux tableaux en JavaScript ?",
       options: [
-        "typeof variable === 'number'",
-        "isNumber(variable)",
-        "variable.isNumber",
+        "array1.concat(array2)",
+        "array1 + array2",
+        "concat(array1, array2)",
       ],
       answer: 0,
     },
     {
       question:
-        "Quelle méthode permet de supprimer le dernier élément d'un tableau ?",
-      options: ["pop()", "remove()", "shift()"],
+        "Quelle est la sortie de (function() { return typeof this; }).call(null) en JavaScript ?",
+      options: ["object", "undefined", "null"],
       answer: 0,
     },
     {
-      question:
-        "Quelle est la structure correcte d'une condition if en JavaScript ?",
-      options: ["if condition then", "if (condition) {}", "if condition {}"],
-      answer: 1,
-    },
-    {
-      question: "Quelle est la valeur de typeof null en JavaScript ?",
-      options: ["object", "null", "undefined"],
+      question: "Comment accéder à toutes les clés d'un objet en JavaScript ?",
+      options: ["Object.keys(obj)", "Object.getKeys(obj)", "obj.keys()"],
       answer: 0,
     },
   ];
@@ -97,7 +104,7 @@ function Quiz4({ setBtc }) {
       // Mettre à jour le statut du quiz dans localStorage
       const savedStatuses =
         JSON.parse(localStorage.getItem("quizStatuses")) || {};
-      savedStatuses[4] = "completed";
+      savedStatuses[9] = "completed";
       localStorage.setItem("quizStatuses", JSON.stringify(savedStatuses));
     }
   }, [currentQuestion, questions.length, score, setBtc]);
@@ -155,4 +162,4 @@ function Quiz4({ setBtc }) {
   );
 }
 
-export default Quiz4;
+export default Quiz9;
