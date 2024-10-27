@@ -1,4 +1,3 @@
-// Nom du fichier : CodeEditor.js
 import React, { useState } from "react";
 import Editor from "react-simple-code-editor";
 import Prism from "prismjs";
@@ -6,9 +5,7 @@ import "prismjs/components/prism-javascript";
 import "prismjs/themes/prism-tomorrow.css";
 
 function CodeEditor() {
-  const [code, setCode] = useState(
-    "// Écrivez votre code ici\nconsole.log('Hello World');"
-  );
+  const [code, setCode] = useState("// Écrivez votre code ici\nconsole.log('Hello World');");
   const [output, setOutput] = useState("");
 
   const highlightCode = (code) => {
@@ -16,28 +13,20 @@ function CodeEditor() {
   };
 
   const handleRunCode = () => {
-    let consoleOutput = "";
-    const customConsole = {
-      log: (...args) => {
-        consoleOutput += args.join(" ") + "\n";
-      },
+    const worker = new Worker(new URL("./codeWorker.js", import.meta.url));
+    worker.postMessage({ code });
+
+    worker.onmessage = function (e) {
+      setOutput(e.data.output);
     };
 
-    try {
-      // Utilisation de `customConsole` pour exécuter le code
-      const codeToRun = new Function("console", code);
-      codeToRun(customConsole);
-      setOutput(consoleOutput); // Utilisez `consoleOutput` ici
-    } catch (error) {
-      setOutput(String(error));
-    }
+    worker.onerror = function (error) {
+      setOutput(`Error: ${error.message}`);
+    };
   };
 
   return (
-    <div
-      className="text-center p-4 rounded-md"
-      style={{ backgroundColor: "#1e293b", color: "#cbd5e1" }}
-    >
+    <div className="text-center p-4 rounded-md" style={{ backgroundColor: "#1e293b", color: "#cbd5e1" }}>
       <Editor
         value={code}
         onValueChange={setCode}
