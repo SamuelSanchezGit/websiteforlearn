@@ -4,6 +4,8 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import Quiz1 from './components/Quiz1';
 import Quiz2 from './components/Quiz2';
+import Quiz3 from './components/Quiz3';
+import Quiz4 from './components/Quiz4';
 import CodeEditor from './components/CodeEditor';
 import Wallet from './components/Wallet';
 import Navigation from './components/Navigation';
@@ -58,6 +60,8 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/quiz1" element={<Quiz1 setBtc={setBtc} hideBtcDuringQuiz={true} />} />
             <Route path="/quiz2" element={<Quiz2 setBtc={setBtc} />} />
+            <Route path="/quiz3" element={<Quiz3 setBtc={setBtc} />} />
+            <Route path="/quiz4" element={<Quiz4 setBtc={setBtc} />} />
             <Route path="/code" element={<CodeEditor code={code} setCode={setCode} />} />
             <Route path="/wallet" element={<Wallet btc={btc} />} />
             <Route path="/quiz" element={<QuizGrid />} />
