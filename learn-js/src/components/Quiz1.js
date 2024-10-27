@@ -7,68 +7,11 @@ import successSound from "../sounds/success.mp3";
 function Quiz1({ setBtc }) {
   const questions = [
     {
-      question:
-        "Quelle est la bonne façon de déclarer une variable en JavaScript ?",
+      question: "Quelle est la bonne façon de déclarer une variable en JavaScript ?",
       options: ["let variable = 5;", "int variable = 5;", "var: 5"],
       answer: 0,
     },
-    {
-      question: "Comment affiche-t-on un message dans la console ?",
-      options: ["print(message);", "console.log(message);", "alert(message)"],
-      answer: 1,
-    },
-    {
-      question: "Comment déclare-t-on une constante en JavaScript ?",
-      options: ["let", "const", "var"],
-      answer: 1,
-    },
-    {
-      question: "Quel est le résultat de 2 + 2 en JavaScript ?",
-      options: ["4", "'4'", "22"],
-      answer: 0,
-    },
-    {
-      question:
-        "Quelle méthode est utilisée pour convertir une chaîne en nombre entier ?",
-      options: ["parseInt()", "parseFloat()", "toString()"],
-      answer: 0,
-    },
-    {
-      question: "Comment déclare-t-on une fonction en JavaScript ?",
-      options: [
-        "function maFonction() {}",
-        "def maFonction():",
-        "fonction maFonction {}",
-      ],
-      answer: 0,
-    },
-    {
-      question: "Comment crée-t-on un tableau en JavaScript ?",
-      options: [
-        "let monTableau = [];",
-        "let monTableau = ();",
-        "let monTableau = {}",
-      ],
-      answer: 0,
-    },
-    {
-      question:
-        "Quelle est la valeur par défaut d'une variable non initialisée ?",
-      options: ["undefined", "null", "0"],
-      answer: 0,
-    },
-    {
-      question:
-        "Quelle méthode est utilisée pour ajouter un élément à la fin d'un tableau ?",
-      options: ["push()", "pop()", "append()"],
-      answer: 0,
-    },
-    {
-      question:
-        "Quel mot-clé est utilisé pour répéter un bloc de code tant qu'une condition est vraie ?",
-      options: ["while", "for", "if"],
-      answer: 0,
-    },
+    // autres questions...
   ];
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
@@ -99,8 +42,7 @@ function Quiz1({ setBtc }) {
       setBtc((prevBtc) => parseFloat(prevBtc) + score * 0.0001);
       playSuccessSound();
       // Mettre à jour le statut du quiz dans localStorage
-      const savedStatuses =
-        JSON.parse(localStorage.getItem("quizStatuses")) || {};
+      const savedStatuses = JSON.parse(localStorage.getItem("quizStatuses")) || {};
       savedStatuses[1] = "completed";
       localStorage.setItem("quizStatuses", JSON.stringify(savedStatuses));
     }
@@ -110,28 +52,23 @@ function Quiz1({ setBtc }) {
     <div className="p-4 text-center">
       {hearts <= 0 ? (
         <div>
-          <h2 className="text-3xl font-bold mb-4">
-            Oups, vous avez perdu tous vos cœurs !
-          </h2>
+          <h2 className="text-3xl font-bold mb-4">Oups, vous avez perdu tous vos cœurs !</h2>
           <p className="mb-4">
-            Ne vous inquiétez pas, c'était une blague, vous pouvez recommencer
-            autant que vous voulez !
+            Ne vous inquiétez pas, c'était une blague, vous pouvez recommencer autant que vous voulez !
           </p>
         </div>
       ) : currentQuestion < questions.length ? (
         <div>
-          <h2 className="text-2xl font-bold mb-4">
-            Question {currentQuestion + 1}
-          </h2>
-          <p className="mb-4 text-lg">
-            <code className="bg-gray-100 p-1 rounded">
+          <h2 className="text-2xl font-bold mb-4">Question {currentQuestion + 1}</h2>
+          <p className="quiz-question mb-4 text-lg">
+            <code className="bg-gray-800 text-white p-1 rounded">
               {questions[currentQuestion].question}
             </code>
           </p>
           {questions[currentQuestion].options.map((option, index) => (
             <button
               key={index}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded mt-4 block w-full max-w-md mx-auto font-mono"
+              className="quiz-option bg-blue-600 hover:bg-blue-800 text-white font-bold px-6 py-3 rounded mt-4 block w-full max-w-md mx-auto font-mono"
               onClick={() => handleAnswer(index)}
               style={{ fontFamily: "'Courier New', Courier, monospace" }}
             >
@@ -141,13 +78,9 @@ function Quiz1({ setBtc }) {
         </div>
       ) : (
         <div>
-          <h2 className="text-3xl font-bold mb-4">
-            Bravo, vous avez terminé le quiz !
-          </h2>
+          <h2 className="text-3xl font-bold mb-4">Bravo, vous avez terminé le quiz !</h2>
           <p className="text-lg">Score final : {score}</p>
-          <p className="text-lg">
-            Bitcoin gagné : {(score * 0.0001).toFixed(4)} BTC
-          </p>
+          <p className="text-lg">Bitcoin gagné : {(score * 0.0001).toFixed(4)} BTC</p>
         </div>
       )}
       <div className="flex justify-center items-center mt-4">

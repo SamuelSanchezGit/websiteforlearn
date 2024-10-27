@@ -7,25 +7,18 @@ import successSound from "../sounds/success.mp3";
 function Quiz5({ setBtc }) {
   const questions = [
     {
-      question:
-        "Quelle méthode est utilisée pour vérifier si une propriété existe dans un objet ?",
+      question: "Quelle méthode est utilisée pour vérifier si une propriété existe dans un objet ?",
       options: ["exists()", "hasOwnProperty()", "inProperty()"],
       answer: 1,
     },
     {
-      question:
-        "Comment arrondir un nombre à l'entier le plus proche en JavaScript ?",
+      question: "Comment arrondir un nombre à l'entier le plus proche en JavaScript ?",
       options: ["Math.ceil()", "Math.floor()", "Math.round()"],
       answer: 2,
     },
     {
-      question:
-        "Quelle méthode permet de sélectionner tous les éléments ayant une classe spécifique ?",
-      options: [
-        "getElementsByClassName()",
-        "querySelectorAll()",
-        "getElementsByTagName()",
-      ],
+      question: "Quelle méthode permet de sélectionner tous les éléments ayant une classe spécifique ?",
+      options: ["getElementsByClassName()", "querySelectorAll()", "getElementsByTagName()"],
       answer: 1,
     },
     {
@@ -40,22 +33,16 @@ function Quiz5({ setBtc }) {
     },
     {
       question: "Quelle est la différence entre let et var ?",
-      options: [
-        "var est fonctionnelle, let est bloc",
-        "let est fonctionnelle, var est bloc",
-        "Aucune différence",
-      ],
+      options: ["var est fonctionnelle, let est bloc", "let est fonctionnelle, var est bloc", "Aucune différence"],
       answer: 0,
     },
     {
-      question:
-        "Quelle méthode permet de remplacer une sous-chaîne dans une chaîne en JavaScript ?",
+      question: "Quelle méthode permet de remplacer une sous-chaîne dans une chaîne en JavaScript ?",
       options: ["replace()", "subString()", "swap()"],
       answer: 0,
     },
     {
-      question:
-        "Quelle méthode est utilisée pour convertir un tableau en chaîne ?",
+      question: "Quelle méthode est utilisée pour convertir un tableau en chaîne ?",
       options: ["join()", "concat()", "stringify()"],
       answer: 0,
     },
@@ -99,8 +86,7 @@ function Quiz5({ setBtc }) {
       setBtc((prevBtc) => parseFloat(prevBtc) + score * 0.0001);
       playSuccessSound();
       // Mettre à jour le statut du quiz dans localStorage
-      const savedStatuses =
-        JSON.parse(localStorage.getItem("quizStatuses")) || {};
+      const savedStatuses = JSON.parse(localStorage.getItem("quizStatuses")) || {};
       savedStatuses[5] = "completed";
       localStorage.setItem("quizStatuses", JSON.stringify(savedStatuses));
     }
@@ -110,28 +96,21 @@ function Quiz5({ setBtc }) {
     <div className="p-4 text-center">
       {hearts <= 0 ? (
         <div>
-          <h2 className="text-3xl font-bold mb-4">
-            Oups, vous avez perdu tous vos cœurs !
-          </h2>
-          <p className="mb-4">
-            Ne vous inquiétez pas, c'était une blague, vous pouvez recommencer
-            autant que vous voulez !
-          </p>
+          <h2 className="text-3xl font-bold mb-4">Oups, vous avez perdu tous vos cœurs !</h2>
+          <p className="mb-4">Ne vous inquiétez pas, c'était une blague, vous pouvez recommencer autant que vous voulez !</p>
         </div>
       ) : currentQuestion < questions.length ? (
         <div>
-          <h2 className="text-2xl font-bold mb-4">
-            Question {currentQuestion + 1}
-          </h2>
-          <p className="mb-4 text-lg">
-            <code className="bg-gray-100 p-1 rounded">
+          <h2 className="text-2xl font-bold mb-4">Question {currentQuestion + 1}</h2>
+          <p className="quiz-question mb-4 text-lg">
+            <code className="bg-gray-800 text-white p-1 rounded">
               {questions[currentQuestion].question}
             </code>
           </p>
           {questions[currentQuestion].options.map((option, index) => (
             <button
               key={index}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded mt-4 block w-full max-w-md mx-auto font-mono"
+              className="quiz-option bg-blue-600 hover:bg-blue-800 text-white font-bold px-6 py-3 rounded mt-4 block w-full max-w-md mx-auto"
               onClick={() => handleAnswer(index)}
               style={{ fontFamily: "'Courier New', Courier, monospace" }}
             >
@@ -141,13 +120,9 @@ function Quiz5({ setBtc }) {
         </div>
       ) : (
         <div>
-          <h2 className="text-3xl font-bold mb-4">
-            Bravo, vous avez terminé le quiz !
-          </h2>
+          <h2 className="text-3xl font-bold mb-4">Bravo, vous avez terminé le quiz !</h2>
           <p className="text-lg">Score final : {score}</p>
-          <p className="text-lg">
-            Bitcoin gagné : {(score * 0.0001).toFixed(4)} BTC
-          </p>
+          <p className="text-lg">Bitcoin gagné : {(score * 0.0001).toFixed(4)} BTC</p>
         </div>
       )}
       <div className="flex justify-center items-center mt-4">

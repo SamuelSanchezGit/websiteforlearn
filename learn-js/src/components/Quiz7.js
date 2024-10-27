@@ -7,8 +7,7 @@ import successSound from "../sounds/success.mp3";
 function Quiz7({ setBtc }) {
   const questions = [
     {
-      question:
-        "Quelle est la sortie de (function(){ return typeof arguments; })() en JavaScript ?",
+      question: "Quelle est la sortie de (function(){ return typeof arguments; })() en JavaScript ?",
       options: ["object", "array", "undefined"],
       answer: 0,
     },
@@ -23,11 +22,7 @@ function Quiz7({ setBtc }) {
     },
     {
       question: "Comment empêcher la modification d'un objet en JavaScript ?",
-      options: [
-        "Object.freeze()",
-        "Object.preventExtensions()",
-        "Object.lock()",
-      ],
+      options: ["Object.freeze()", "Object.preventExtensions()", "Object.lock()"],
       answer: 0,
     },
     {
@@ -65,8 +60,7 @@ function Quiz7({ setBtc }) {
       answer: 0,
     },
     {
-      question:
-        "Quelle est la portée d'une variable déclarée avec var à l'intérieur d'une fonction ?",
+      question: "Quelle est la portée d'une variable déclarée avec var à l'intérieur d'une fonction ?",
       options: ["Fonction", "Bloc", "Globale"],
       answer: 0,
     },
@@ -100,8 +94,7 @@ function Quiz7({ setBtc }) {
       setBtc((prevBtc) => parseFloat(prevBtc) + score * 0.0001);
       playSuccessSound();
       // Mettre à jour le statut du quiz dans localStorage
-      const savedStatuses =
-        JSON.parse(localStorage.getItem("quizStatuses")) || {};
+      const savedStatuses = JSON.parse(localStorage.getItem("quizStatuses")) || {};
       savedStatuses[7] = "completed";
       localStorage.setItem("quizStatuses", JSON.stringify(savedStatuses));
     }
@@ -111,28 +104,21 @@ function Quiz7({ setBtc }) {
     <div className="p-4 text-center">
       {hearts <= 0 ? (
         <div>
-          <h2 className="text-3xl font-bold mb-4">
-            Oups, vous avez perdu tous vos cœurs !
-          </h2>
-          <p className="mb-4">
-            Ne vous inquiétez pas, c'était une blague, vous pouvez recommencer
-            autant que vous voulez !
-          </p>
+          <h2 className="text-3xl font-bold mb-4">Oups, vous avez perdu tous vos cœurs !</h2>
+          <p className="mb-4">Ne vous inquiétez pas, c'était une blague, vous pouvez recommencer autant que vous voulez !</p>
         </div>
       ) : currentQuestion < questions.length ? (
         <div>
-          <h2 className="text-2xl font-bold mb-4">
-            Question {currentQuestion + 1}
-          </h2>
-          <p className="mb-4 text-lg">
-            <code className="bg-gray-100 p-1 rounded">
+          <h2 className="text-2xl font-bold mb-4">Question {currentQuestion + 1}</h2>
+          <p className="quiz-question mb-4 text-lg">
+            <code className="bg-gray-800 text-white p-1 rounded">
               {questions[currentQuestion].question}
             </code>
           </p>
           {questions[currentQuestion].options.map((option, index) => (
             <button
               key={index}
-              className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-6 py-3 rounded mt-4 block w-full max-w-md mx-auto font-mono"
+              className="quiz-option bg-blue-600 hover:bg-blue-800 text-white font-bold px-6 py-3 rounded mt-4 block w-full max-w-md mx-auto"
               onClick={() => handleAnswer(index)}
               style={{ fontFamily: "'Courier New', Courier, monospace" }}
             >
@@ -142,13 +128,9 @@ function Quiz7({ setBtc }) {
         </div>
       ) : (
         <div>
-          <h2 className="text-3xl font-bold mb-4">
-            Bravo, vous avez terminé le quiz !
-          </h2>
+          <h2 className="text-3xl font-bold mb-4">Bravo, vous avez terminé le quiz !</h2>
           <p className="text-lg">Score final : {score}</p>
-          <p className="text-lg">
-            Bitcoin gagné : {(score * 0.0001).toFixed(4)} BTC
-          </p>
+          <p className="text-lg">Bitcoin gagné : {(score * 0.0001).toFixed(4)} BTC</p>
         </div>
       )}
       <div className="flex justify-center items-center mt-4">
