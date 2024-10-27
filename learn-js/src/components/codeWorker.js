@@ -1,18 +1,17 @@
-/* eslint-disable no-new-func */
-self.onmessage = function (e) {
-    const { code } = e.data;
-    let consoleOutput = "";
-    const customConsole = {
-      log: (...args) => {
-        consoleOutput += args.join(" ") + "\n";
-      },
-    };
+/* eslint-disable no-restricted-globals */
+
+self.onmessage = function (event) {
+    const { code } = event.data;
+    let result;
   
     try {
-      new Function("console", code)(customConsole);
-      self.postMessage({ output: consoleOutput });
+      // Évaluer le code reçu
+      result = eval(code); // Attention : Eval n'est pas sécurisé, assurez-vous de vérifier l'input
     } catch (error) {
-      self.postMessage({ output: String(error) });
+      result = error.message;
     }
+  
+    // Envoyer le résultat de l'évaluation
+    self.postMessage(result);
   };
   
