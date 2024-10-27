@@ -6,7 +6,9 @@ import "prismjs/components/prism-javascript";
 import "prismjs/themes/prism-tomorrow.css";
 
 function CodeEditor() {
-  const [code, setCode] = useState("// Écrivez votre code ici\nconsole.log('Hello World');");
+  const [code, setCode] = useState(
+    "// Écrivez votre code ici\nconsole.log('Hello World');"
+  );
   const [output, setOutput] = useState("");
 
   const highlightCode = (code) => {
@@ -15,75 +17,27 @@ function CodeEditor() {
 
   const handleRunCode = () => {
     let consoleOutput = "";
-
     const customConsole = {
       log: (...args) => {
         consoleOutput += args.join(" ") + "\n";
       },
     };
 
-    // Vérifier si le code contient des accès dangereux
-    if (code.includes("window") || code.includes("document") || code.includes("fetch")) {
-      setOutput("Erreur : Accès non autorisé détecté dans le code.");
-      return;
-    }
-
     try {
-      // Créer un Blob pour le Web Worker
-      const workerBlob = new Blob(
-        [
-          `
-          onmessage = function(e) {
-            const code = e.data;
-            let consoleOutput = "";
-            const customConsole = {
-              log: (...args) => {
-                consoleOutput += args.join(" ") + "\\n";
-              }
-            };
-
-            try {
-              const codeToRun = new Function("console", code);
-              codeToRun(customConsole);
-              postMessage(consoleOutput);
-            } catch (error) {
-              postMessage("Erreur: " + error.message);
-            }
-          }
-          `
-        ],
-        { type: "application/javascript" }
-      );
-
-      const workerUrl = URL.createObjectURL(workerBlob);
-      const worker = new Worker(workerUrl);
-
-      worker.onmessage = (e) => {
-        setOutput(e.data);
-        worker.terminate(); // Arrêter le worker après l'exécution pour éviter les fuites de mémoire
-      };
-
-      // Définir un timeout de 2 secondes pour limiter l'exécution
-      const timeout = setTimeout(() => {
-        worker.terminate();
-        setOutput("Erreur : Le code a mis trop de temps à s'exécuter.");
-      }, 2000);
-
-      worker.postMessage(code);
-
-      worker.onmessage = (e) => {
-        clearTimeout(timeout); // Supprimer le timeout si le worker répond à temps
-        setOutput(e.data);
-        worker.terminate();
-      };
-
+      // Utilisation de `customConsole` pour exécuter le code
+      const codeToRun = new Function("console", code);
+      codeToRun(customConsole);
+      setOutput(consoleOutput); // Utilisez `consoleOutput` ici
     } catch (error) {
-      setOutput("Erreur: " + error.message);
+      setOutput(String(error));
     }
   };
 
   return (
-    <div className="text-center p-4 rounded-md" style={{ backgroundColor: "#1e293b", color: "#cbd5e1" }}>
+    <div
+      className="text-center p-4 rounded-md"
+      style={{ backgroundColor: "#1e293b", color: "#cbd5e1" }}
+    >
       <Editor
         value={code}
         onValueChange={setCode}

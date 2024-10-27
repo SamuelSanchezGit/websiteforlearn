@@ -19,7 +19,7 @@ import QuizGrid from './components/QuizGrid';
 import { FaMoon, FaSun } from 'react-icons/fa';
 
 function App() {
-  const [hearts, setHearts] = useState(() => {
+  const [hearts] = useState(() => {
     const savedHearts = localStorage.getItem("hearts");
     return savedHearts ? JSON.parse(savedHearts) : 3;
   });
